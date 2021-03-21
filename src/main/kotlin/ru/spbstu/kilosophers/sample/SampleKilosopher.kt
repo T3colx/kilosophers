@@ -33,15 +33,6 @@ class SampleKilosopher(left: Fork, right: Fork, val index: Int) : AbstractKiloso
     private val counterContext = Executors.newSingleThreadExecutor().asCoroutineDispatcher() + CoroutineName("Action of kilosopher #$index")
 
     override suspend fun nextAction(): Action {
-//        return when (state) {
-//            WAITS_BOTH -> TAKE_LEFT(10)
-//            WAITS_RIGHT -> TAKE_RIGHT(10)
-//            EATS -> EAT(50)
-//            HOLDS_BOTH -> DROP_LEFT(10)
-//            HOLDS_RIGHT -> DROP_RIGHT(10)
-//            THINKS -> THINK(100)
-//        }
-
         if  (index % 2 == startingPoint && startingPoint != 0 ||
             startingPoint == 0 &&
                     (index!= 0 && index != kilosopherMaxIndex ||
