@@ -10,15 +10,15 @@ import ru.spbstu.kilosophers.Fork
 import ru.spbstu.kilosophers.sample.SampleKilosopher.State.*
 import java.util.concurrent.Executors
 
-//
-var counter = 0
-var startingPoint = 0
-var kilosopherMaxIndex = 0
-var eatingKilosophersMaxCount = 0
-var lastKilosopherActSwitch = false
-//
-
 class SampleKilosopher(left: Fork, right: Fork, val index: Int) : AbstractKilosopher(left, right) {
+
+    companion object {
+        var counter = 0
+        var startingPoint = 0
+        var kilosopherMaxIndex = 0
+        var eatingKilosophersMaxCount = 0
+        var lastKilosopherActSwitch = false
+    }
 
     internal enum class State {
         WAITS_BOTH,
@@ -48,7 +48,6 @@ class SampleKilosopher(left: Fork, right: Fork, val index: Int) : AbstractKiloso
                 THINKS -> THINK(100)
             }
         } else return when (state) {
-            EATS -> EAT(50)
             HOLDS_BOTH -> DROP_LEFT(10)
             HOLDS_RIGHT -> DROP_RIGHT(10)
             else ->  THINK(100)

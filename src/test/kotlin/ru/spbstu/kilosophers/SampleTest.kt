@@ -3,9 +3,9 @@ package ru.spbstu.kilosophers
 import kotlinx.coroutines.*
 import ru.spbstu.kilosophers.atomic.AtomicForkBox
 import ru.spbstu.kilosophers.concurrent.ConcurrentForkBox
+import ru.spbstu.kilosophers.sample.SampleKilosopher
 import ru.spbstu.kilosophers.sample.SampleUniversity
-import ru.spbstu.kilosophers.sample.eatingKilosophersMaxCount
-import ru.spbstu.kilosophers.sample.kilosopherMaxIndex
+
 import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 import kotlin.test.Test
@@ -23,8 +23,8 @@ class SampleTest {
             kilosophers.add(kilosopher)
         }
 //
-        kilosopherMaxIndex = kilosopherCount - 1
-        eatingKilosophersMaxCount = kilosopherCount / 2
+        SampleKilosopher.kilosopherMaxIndex = kilosopherCount - 1
+        SampleKilosopher.eatingKilosophersMaxCount = kilosopherCount / 2
 //
         val jobs = kilosophers.map { it.act(duration) }
         var owners: List<AbstractKilosopher> = emptyList()
