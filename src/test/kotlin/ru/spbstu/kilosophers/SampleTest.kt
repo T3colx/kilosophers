@@ -3,7 +3,6 @@ package ru.spbstu.kilosophers
 import kotlinx.coroutines.*
 import ru.spbstu.kilosophers.atomic.AtomicForkBox
 import ru.spbstu.kilosophers.concurrent.ConcurrentForkBox
-import ru.spbstu.kilosophers.sample.SampleKilosopher
 import ru.spbstu.kilosophers.sample.SampleUniversity
 
 import kotlin.test.assertNotEquals
@@ -22,10 +21,7 @@ class SampleTest {
             val kilosopher = university.produce(leftFork, rightFork, index)
             kilosophers.add(kilosopher)
         }
-//
-        SampleKilosopher.kilosopherMaxIndex = kilosopherCount - 1
-        SampleKilosopher.eatingKilosophersMaxCount = kilosopherCount / 2
-//
+
         val jobs = kilosophers.map { it.act(duration) }
         var owners: List<AbstractKilosopher> = emptyList()
 
