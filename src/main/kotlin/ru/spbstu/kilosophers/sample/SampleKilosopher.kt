@@ -50,7 +50,7 @@ class SampleKilosopher(left: Fork, right: Fork, val index: Int) : AbstractKiloso
                 counter = 0
             }
         }
-        return THINKS
+        return HOLDS_RIGHT
     }
 
 
@@ -78,8 +78,8 @@ class SampleKilosopher(left: Fork, right: Fork, val index: Int) : AbstractKiloso
             TAKE_LEFT -> if (result) WAITS_RIGHT else WAITS_BOTH
             TAKE_RIGHT -> if (result) EATS else WAITS_RIGHT
             EAT -> HOLDS_BOTH
-            DROP_LEFT -> if (result) HOLDS_RIGHT else HOLDS_BOTH
-            DROP_RIGHT -> if (result) finishingChores() else HOLDS_RIGHT
+            DROP_LEFT -> if (result) finishingChores() else HOLDS_BOTH
+            DROP_RIGHT -> if (result) THINKS else HOLDS_RIGHT
             THINK -> WAITS_BOTH
         }
     }
